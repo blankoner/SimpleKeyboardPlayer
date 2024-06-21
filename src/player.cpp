@@ -82,7 +82,7 @@ bool Player::LoadBackground()
   return true;
 }
 
-bool Player::LoadSounds()
+void Player::LoadSounds()
 {
   // TO DO better method of giving sound_paths
   m_soundRhodes = Mix_LoadWAV("../sounds/rhodes.wav");
@@ -90,13 +90,6 @@ bool Player::LoadSounds()
   m_soundBD = Mix_LoadWAV("../sounds/808-bassdrum.wav");
   m_soundHH = Mix_LoadWAV("../sounds/808-hihat.wav");
   m_soundCL = Mix_LoadWAV("../sounds/808-clap.wav");
-
-  if(!m_soundRhodes || m_soundCB || m_soundBD || m_soundHH || m_soundCL)
-  {
-    return false;
-  }
-
-  return true;
 }
 
 void Player::RefreshWindow()
@@ -167,10 +160,7 @@ void Player::Play()
     std::cerr << "Unable to create an audio device!" << std::endl;
   }
 
-  if(!LoadSounds())
-  {
-    std::cerr << "Unable to load the sounds!" << std::endl;
-  }
+  LoadSounds();
 
   if(!CreateWindow(m_width, m_height))
   {

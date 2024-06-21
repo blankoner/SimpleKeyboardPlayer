@@ -20,7 +20,7 @@ private:
   bool CreateAudioDevice();
   bool CreateWindow(int width, int height);
   bool LoadBackground();
-  bool LoadSounds();
+  void LoadSounds();
   void RefreshWindow();
   void LoadChannels();
   void HandleEvents();
